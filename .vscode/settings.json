@@ -1,0 +1,8 @@
+{
+    "BracketHighlighter.enableExtension": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cSpell.words": [
+        "sublist",
+        "vsync"
+    ]
+}
