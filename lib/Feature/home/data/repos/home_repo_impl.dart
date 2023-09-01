@@ -55,7 +55,7 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks({required String category}) async {
+  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks() async {
     try {
       List<BookEntity> books;
       books = await homeRemoteDataSource.fetchSimilarBooks();
