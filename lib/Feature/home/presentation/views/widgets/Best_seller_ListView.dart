@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projects/Feature/home/data/models/book_model/book_model.dart';
-import 'package:projects/Feature/home/domain/entities/book_entity.dart';
 
 import 'best_seller_item.dart';
 

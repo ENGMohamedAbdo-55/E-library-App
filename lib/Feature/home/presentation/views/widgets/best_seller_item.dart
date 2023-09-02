@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 
 import 'package:projects/Core/utiles/app_rourter.dart';
 import 'package:projects/Feature/home/data/models/book_model/book_model.dart';
-import 'package:projects/Feature/home/data/models/book_model/volume_info.dart';
 import 'package:projects/Feature/home/presentation/views/widgets/custom_book_image.dart';
 
 import '../../../../../Core/utiles/Styles.dart';
