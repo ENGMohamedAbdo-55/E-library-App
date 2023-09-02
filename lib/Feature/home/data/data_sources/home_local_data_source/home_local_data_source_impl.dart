@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:projects/Feature/home/data/models/book_model/book_model.dart';
 import 'package:projects/Feature/home/domain/entities/book_entity.dart';
 import 'package:projects/constants.dart';
 
@@ -18,8 +19,8 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   }
 
   @override
-  List<BookEntity> fetchNewestBooks() {
-    var box = Hive.box<BookEntity>(kNeewstBox);
+  List<BookModel> fetchNewestBooks() {
+    var box = Hive.box<BookModel>(kNeewstBox);
     return box.values.toList();
   }
 }

@@ -7,8 +7,8 @@ class RatingItem extends StatelessWidget {
   const RatingItem(
       {super.key, this.mainAxisAlignment = MainAxisAlignment.start, required this.rating, required this.ratingCount});
   final MainAxisAlignment mainAxisAlignment;
-  final num rating;
- final num ratingCount;
+  final  rating;
+ final  ratingCount;
   @override
   Widget build(BuildContext context) {
     return Padding(

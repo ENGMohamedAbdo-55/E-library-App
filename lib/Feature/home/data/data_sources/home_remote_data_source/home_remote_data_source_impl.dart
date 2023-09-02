@@ -11,11 +11,11 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0}) async {
+  Future<List<BookModel>> fetchFeaturedBooks({int pageNumber = 0}) async {
     var data = await apiService.get(
         endPoint:
             'volumes?Filtering=free-ebooks&q=programming&startIndex=${pageNumber * 10}');
-    List<BookEntity> books = [];
+    List<BookModel> books = [];
     for (var bookMap in data['items']) {
       books.add(BookModel.fromJson(bookMap));
     }
@@ -24,11 +24,11 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   }
 
   @override
-  Future<List<BookEntity>> fetchNewestBooks() async {
+  Future<List<BookModel>> fetchNewestBooks() async {
     var data = await apiService.get(
         endPoint:
             'volumes?q=computer-science&filtering=free-ebooks&sorting=newest');
-    List<BookEntity> books = [];
+    List<BookModel> books = [];
     for (var bookMap in data['items']) {
       books.add(BookModel.fromJson(bookMap));
     }
@@ -39,7 +39,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchSimilarBooks() async{
 
- var data=await apiService.get(endPoint: 'volumes?q=computer-science,programming&filtering=free-ebooks' );
+ var data=await apiService.get(endPoint: 'volumes?q=computer-science,programming&filtering=free-ebooks&Sorting=relevance' );
  List <BookEntity> books=[];
  for(var bookMap in data['items'])
  {

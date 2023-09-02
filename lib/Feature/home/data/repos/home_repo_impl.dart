@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:projects/Feature/home/data/models/book_model/book_model.dart';
 
 import '../../../../Core/errors/failures.dart';
 import '../../domain/entities/book_entity.dart';
@@ -36,13 +37,10 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
-      List<BookEntity> books;
-      books = homeLocalDataSource.fetchNewestBooks();
-      if (books.isNotEmpty) {
-        return right(books);
-      }
+      List<BookModel> books;
+     
       books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
     } catch (e) {
@@ -55,7 +53,7 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchSimilarBooks({required String category}) async {
     try {
       List<BookEntity> books;
       books = await homeRemoteDataSource.fetchSimilarBooks();

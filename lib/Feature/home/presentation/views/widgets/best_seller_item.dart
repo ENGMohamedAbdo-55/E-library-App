@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:projects/Core/utiles/app_rourter.dart';
 import 'package:projects/Feature/home/data/models/book_model/book_model.dart';
+import 'package:projects/Feature/home/data/models/book_model/volume_info.dart';
 import 'package:projects/Feature/home/presentation/views/widgets/custom_book_image.dart';
 
 import '../../../../../Core/utiles/Styles.dart';
@@ -9,23 +11,17 @@ import 'Book_Rating_Item.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({
-    super.key,
-    required this.img,
-    required this.rating,
-    required this.ratingCount,
-    required this.autherName,
-    required this.title,
-  });
-  final String img;
-  final num rating;
-  final num ratingCount;
-  final String autherName;
-  final String title;
+    Key? key, required this.bookModel,
+    
+    
+  }) : super(key: key);
+  final BookModel bookModel;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView,);
+        GoRouter.of(context).push(AppRouter.kBookDetailsView,extra: bookModel);
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 7, top: 14),
@@ -33,7 +29,7 @@ class BestSellerListViewItem extends StatelessWidget {
           height: 125,
           child: Row(
             children: [
-              CustomBookImage(imageUrl: img),
+              CustomBookImage(imageUrl:bookModel.volumeInfo!.imageLinks!.thumbnail??''),
               const SizedBox(
                 width: 25,
               ),
@@ -47,7 +43,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     SizedBox(
                         width: MediaQuery.of(context).size.width * .5,
                         child: Text(
-                          title,
+                          bookModel.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: Styles.textStyle21,
@@ -56,7 +52,7 @@ class BestSellerListViewItem extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      autherName,
+                      bookModel.authorName??'',
                       style: Styles.textStyle15,
                     ),
                     const SizedBox(
@@ -70,10 +66,10 @@ class BestSellerListViewItem extends StatelessWidget {
                               .copyWith(fontWeight: FontWeight.w800),
                         ),
                         // SizedBox(width: MediaQuery.of(context).size.width*.14),
-                        const Spacer(),
+                         const Spacer(),
                         RatingItem(
-                          rating: rating,
-                          ratingCount: ratingCount,
+                          rating: bookModel.rating,
+                          ratingCount: bookModel.volumeInfo!.ratingsCount,
                         )
                       ],
                     )

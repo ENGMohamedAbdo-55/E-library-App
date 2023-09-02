@@ -23,19 +23,19 @@ abstract class AppRouter {
     //   builder: ((context, state) => const SplashView()),
     // ),
 
+    // GoRoute(
+    //   path: kSearchview,
+    //   builder: ((context, state) => BlocProvider(
+    //         create: (context) => SearchedBooksCubit(),
+    //         child: const SearchView(),
+    //       )),
+    // ),
     GoRoute(
-      path: kSearchview,
-      builder: ((context, state) => BlocProvider(
-            create: (context) => SearchedBooksCubit(),
-            child: const SearchView(),
-          )),
-    ),
-    GoRoute(
-      path: kBookDetailsView,
-      builder: ((context, state) => BlocProvider(
-            create: (context) => SimilarBooksCubit( getIt.get<HomeRepoImpl>()),
-            child:   const BookDetailsView(),
-          )),
-    ),
+        path: kBookDetailsView,
+        builder: (context, state) => BlocProvider(
+            create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImpl>()),
+            child: BookDetailsView(
+              bookModel: state.extra as BookModel,
+            ))),
   ]);
 }

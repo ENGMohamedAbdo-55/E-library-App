@@ -11,6 +11,6 @@ class NewestBooksFailure extends NewestBooksState {
 
   NewestBooksFailure(this.errMessage);
 }
-class NewestBooksSuccess extends NewestBooksState {final List<BookEntity> books;
+class NewestBooksSuccess extends NewestBooksState {final List<BookModel> books;
 
   NewestBooksSuccess(this.books);}

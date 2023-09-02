@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:projects/Feature/home/data/models/book_model/book_model.dart';
 
 import '../../../../domain/entities/book_entity.dart';
 import '../../../../domain/use_cases/fetch_newest_books_usecase.dart';
